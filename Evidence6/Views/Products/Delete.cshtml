@@ -1,0 +1,51 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div style="margin: 0 auto;padding-top: 30px; position: relative;">
+            <div class="card p-lg-3 shadow-lg p-3 mb-5 rounded " style="margin-left: auto; margin-right: auto; width: 40%; background-color: #FEFEFE; color: #015B42 ">
+                <h3 class="text-center">Delete Category</h3><hr />
+                <div class="row my-1">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label asp-for="ProductName" class="col-form-label col-4"></label>
+                    <div class="col-4 pt-2">
+                        <label>@Model.ProductName</label>
+
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label asp-for="Price" class="col-form-label  col-4"></label>
+                    <div class="col-8 pt-2">
+                        <label>@Model.Price</label>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label asp-for="ExpiryDate" class="col-form-label  col-4"></label>
+                    <div class="col-8 pt-2">
+                        <label>@Model.ExpiryDate</label>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label asp-for="Picture" class="col-form-label  col-4"></label>
+                    <div class="col-8 pt-2">
+                        <img src="/Uploads/@Model.Picture" style="width:38px" class="img-thumbnail" />
+                    </div>
+                </div>
+                <form method="post" asp-action="Delete" asp-controller="Products" asp-route-ProductId="@Model.ProductId">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <a asp-action="Index" asp-controller="Products" class="btn btn-success">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

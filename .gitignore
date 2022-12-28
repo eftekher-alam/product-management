@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Evidence6/bin/Debug/netcoreapp3.1
+/Evidence6/obj

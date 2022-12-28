@@ -1,0 +1,51 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div style="margin: 0 auto;padding-top: 30px; position: relative;">
+    <div class="card p-lg-3 shadow-lg p-3 mb-5 rounded " style="margin-left: auto; margin-right: auto; width: 40%; background-color: #FEFEFE; color: #015B42 ">
+        <h3 class="text-center">Create Category</h3><hr />
+        <div id="placeholder"></div>
+        <form method="post" asp-action="Create" asp-controller="Categories" id="fCategory"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-mode="replace"
+              data-ajax-update="#placeholder"
+              data-ajax-success="onSuccess">
+            <div class="form-group mb-3">
+                <label asp-for="CategoryName"></label>
+                <div>
+                    <input type="text" asp-for="CategoryName" class="form-control" />
+                    <span asp-validation-for="CategoryName" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Discription"></label>
+                <div>
+                    <input type="text" asp-for="Discription" class="form-control">
+                    <span asp-validation-for="Discription" class="text-danger" />
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="reset" class="btn btn-success">Reset</button>
+                <a asp-action="Index" asp-controller="Categories" class="btn btn-success">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/validate/jquery.validate.js"></script>
+    <script src="~/libs/validate/jquery.validate.unobtrusive.js"></script>
+    <script src="~/libs/ajax/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function onSuccess() {
+            $("#fCategory").trigger('reset');
+        }
+    </script>
+}
+

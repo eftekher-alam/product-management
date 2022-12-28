@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <div class="col-12" style="margin: 0 auto;padding-top: 30px; position: relative;">
+        <div class="card p-lg-3 shadow-lg p-3 mb-5 rounded" style="margin-left: auto; margin-right: auto; width: 90%; background-color: #FEFEFE; color: #015B42; ">
+            <h3 class="text-center">Products</h3>
+            <div class="d-flex justify-content-end mb-1">
+
+                <a class="btn btn-success btn-sm" asp-controller="Products" asp-action="Create">Create</a>
+            </div>
+            <table class="table" style="color: #015B42">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Expiry Date</th>
+                        <th>Category Name</th>
+                        <th>Picture</th>
+                        <th>Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var proj in Model)
+                    {
+                    <tr>
+                       
+                        <td>@proj.ProductName</td>
+                        <td>@proj.Price.ToString("0.00")</td>
+                        <td>@proj.ExpiryDate.ToString("yyyy-MM-dd")</td>
+                        <td>@proj.Category.CategoryName</td>
+                        <td><img asp-append-version="true" src="/Uploads/@proj.Picture" style="width:38px" class="img-thumbnail" /></td>
+                        <td>
+                            <a class="btn btn-success btn-sm" asp-controller="Products" asp-action="Edit" asp-route-id="@proj.ProductId">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Products" asp-action="Delete" asp-route-id="@proj.ProductId">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

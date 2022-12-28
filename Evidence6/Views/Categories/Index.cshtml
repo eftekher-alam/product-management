@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <div class="col-12" style="margin: 0 auto;padding-top: 30px; position: relative;">
+        <div class="card p-lg-3 shadow-lg p-3 mb-5 rounded" style="margin-left: auto; margin-right: auto; width: 90%; background-color: #FEFEFE; color: #015B42; ">
+            <h3 class="text-center">Categories</h3>
+             <div class="d-flex justify-content-end mb-1">
+
+            <a class="btn btn-success btn-sm" asp-controller="Categories" asp-action="Create">Create</a>
+        </div>
+        <table class="table" style="color: #015B42">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Description</th>
+                    <th>Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var proj in Model)
+                {
+                    <tr>
+                        <td>@proj.CategoryName</td>
+
+                        <td>@proj.Discription</td>
+                        <td>
+                            <a class="btn btn-success btn-sm" asp-controller="Categories" asp-action="Edit" asp-route-id="@proj.CategoryId">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Categories" asp-action="Delete" asp-route-id="@proj.CategoryId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+    </div>
+

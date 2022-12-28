@@ -1,0 +1,77 @@
+﻿@model Evidence6.ViewModels.ProductVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div style="margin: 0 auto;padding-top: 30px; position: relative;">
+    <div class="card p-lg-3 shadow-lg p-3 mb-5 rounded " style="margin-left: auto; margin-right: auto; width: 40%; background-color: #FEFEFE; color: #015B42 ">
+        <h3 class="text-center">Create Category</h3><hr />
+        <div id="placeholder"></div>
+        <form method="post" asp-action="Create" asp-controller="Products" enctype="multipart/form-data">
+            <div class="form-group mb-3">
+                <label asp-for="ProductName"></label>
+                <div>
+                    <input type="text" asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Price"></label>
+                <div>
+                    <input type="text" asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ExpiryDate"></label>
+                <div>
+                    <input type="text" asp-for="ExpiryDate" class="form-control" />
+                    <span asp-validation-for="ExpiryDate" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="CategoryId">Category Name</label>
+                <div>
+                    <select asp-for="CategoryId" class="form-select" asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"))" required>
+                        <option selected="selected" value="">Select Category</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Picture"></label>
+                <div>
+                    <input type="file" asp-for="Picture" class="form-control" />
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="reset" class="btn btn-success">Reset</button>
+                <a asp-action="Index" asp-controller="Products" class="btn btn-success">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section styles {
+
+    <link href="~/libs/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/validate/jquery.validate.js"></script>
+    <script src="~/libs/validate/jquery.validate.unobtrusive.js"></script>
+    <script src="~/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script>
+        $("#ExpiryDate").datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    </script>
+}
+
